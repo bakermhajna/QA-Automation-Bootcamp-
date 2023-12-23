@@ -14,16 +14,13 @@ public class Infra {
     public Infra(String driverPath, Browser browser){
         switch (browser) {
             case CHROME:
-                driver = new ChromeDriver();
                 System.setProperty("webdriver.chrome.driver",driverPath);
                 break;
             case EDGE:
                 System.setProperty("webdriver.edge.driver",driverPath);
-                driver = new EdgeDriver();
                 break;
             case FIREFOX:
                 System.setProperty("webdriver.firefox.driver",driverPath);
-                driver = new FirefoxDriver();
                 break;
         }
         this.browser=browser;
