@@ -1,20 +1,21 @@
 package steps;
+import infrastructure.enums.Browser;
 import io.cucumber.java.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import utils.TestContext;
+import infrastructure.Infra;
 
 public class Hooks {
 
-    WebDriver driver;
-    TestContext testContext;
+    private Infra infra;
+    private TestContext testContext;
     public Hooks(TestContext testContext){
+        this.infra= new Infra("chromedriver.exe", Browser.CHROME);
         this.testContext = testContext;
     }
 
     @BeforeAll
     public static void setUp() {
-        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+
     }
 
     @AfterAll
@@ -25,13 +26,13 @@ public class Hooks {
 
     @Before
     public void beforeEachTest() {
-        driver = new ChromeDriver();
-        testContext.put("driver",driver);
+        infra.initBrowser();
+        testContext.put("driver",infra.getDriver());
 
     }
     @After
     public void afterEachTest() {
-        driver.close();
+        infra.closeDriver();
     }
 
 

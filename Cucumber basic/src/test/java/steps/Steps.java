@@ -26,7 +26,6 @@ public class Steps {
         WebDriver driver =testContext.get("driver");
         driver.get("https://www.nba.com/stats/players/traditional");
         mainPage=new MainPage(driver);
-        testContext.put("page",mainPage);
         mainPage.maxpage();
         mainPage.ClickAccept();
     }
