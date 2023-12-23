@@ -88,7 +88,7 @@ public class MainPage extends BasePage {
         return element.isDisplayed();
 
     }
-    public boolean checkFilterSeasonSegment(){
+    public boolean checkFilter(){
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[3]/section[1]/div/div/div[6]/div")));
         return element.isDisplayed();

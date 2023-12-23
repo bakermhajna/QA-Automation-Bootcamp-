@@ -63,23 +63,9 @@ public class Steps {
         mainPage.selectPerMode(mode);
     }
 
-
-
-
-
-    @Then("validate season type filter is on")
-    public void validate_season_type_filter_is_on(){
-        Assertions.assertTrue(mainPage.checkFilterSeasonType());
-    }
-
-    @Then("validate season filter is on")
-    public void validate_season_filter_is_on(){
-        Assertions.assertTrue(mainPage.checkFilterSeason());
-    }
-
     @Then("validate filter is on")
-    public void validate_season_segment_filter_is_on(){
-        Assertions.assertTrue(mainPage.checkFilterSeasonSegment());
+    public void validate_filter_is_on(){
+        Assertions.assertTrue(mainPage.checkFilter());
     }
 
 
