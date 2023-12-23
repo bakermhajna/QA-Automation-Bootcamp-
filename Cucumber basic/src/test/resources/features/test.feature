@@ -1,15 +1,21 @@
 Feature: Filter Feature
+
   Scenario: Filter by season type
     Given I am on the player page
     When I select season type as "Playoffs"
     Then validate filter is on
 
-
-  Scenario: Filter by season
+  Scenario Outline: Filter by season
     Given I am on the player page
-    When I select "2022-23" season
+    When I select '<season>' season
     Then validate filter is on
 
+    Examples:
+      | season  |
+      | 2022-23 |
+      | 2021-22 |
+      | 2020-21 |
+      | 2019-20 |
 
   Scenario: Filter by season segment
     Given I am on the player page

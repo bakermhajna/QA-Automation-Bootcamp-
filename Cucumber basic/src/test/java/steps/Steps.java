@@ -30,6 +30,7 @@ public class Steps {
         mainPage.maxpage();
         mainPage.ClickAccept();
     }
+
     @Given("I am on the team page")
     public void i_am_on_the_team_page()  {
         driver.get("https://www.nba.com/stats/teams/traditional");
@@ -67,8 +68,6 @@ public class Steps {
     public void validate_filter_is_on(){
         Assertions.assertTrue(mainPage.checkFilter());
     }
-
-
 
 
 }

@@ -6,12 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Infra {
+public class BrwoserWarpper {
 
     private static WebDriver driver;
     private Browser browser;
 
-    public Infra(String driverPath, Browser browser){
+    public BrwoserWarpper(String driverPath, Browser browser){
         switch (browser) {
             case CHROME:
                 System.setProperty("webdriver.chrome.driver",driverPath);
