@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class PropertiesWrapper {
 
-    private final String propPath="src/test/resources/config.properties";
+    private final String propPath="config.properties";
     private  Properties prop ;
     public PropertiesWrapper() {
         prop = new Properties();

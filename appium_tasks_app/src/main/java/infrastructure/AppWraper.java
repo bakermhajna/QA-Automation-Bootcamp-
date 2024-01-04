@@ -12,7 +12,7 @@ public class AppWraper {
 
     private AndroidDriver driver;
     PropertiesWrapper properties=new PropertiesWrapper();
-    private AppWraper()  {
+    public AppWraper()  {
         caps.setCapability("platformName", properties.getProperties(("platformName")));
         caps.setCapability("deviceName", properties.getProperties(("deviceName")));
         caps.setCapability("platformVersion", properties.getProperties(("platformVersion")));

@@ -1,0 +1,6 @@
+let timeNow = new Date()
+console.log(timeNow)
+const moment = require('moment')
+// import moment from "moment"
+let formattedTimeNow = moment().format("MMMM Do, YYYY")
+console.log(formattedTimeNow) //January 3rd, 2017

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Book and GIF</title>
+</head>
+<body>
+
+<script>
+  function getRandomWord1() {
+    return fetch('https://random-word-api.herokuapp.com/word')
+      .then(response => response.json())
+      .then(word=>{
+        return Promise.all([getBookData(word),getRandomGif(word)])
+
+      });
+  }
+  function getRandomWord() {
+    return fetch('https://random-word-api.herokuapp.com/word')
+      .then(response => response.json())
+  }
+
+  function getBookData(word) {
+    let apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${word}`;
+    return fetch(apiUrl)
+      .then(response => response.json());
+  }
+
+  function getRandomGif(word) {
+    let giphyApiKey = 'Fix6oXQZ8EgYtBVo0Rj74FJHauLdCEIa';
+    let giphyUrl = `https://api.giphy.com/v1/gifs/random?api_key=${giphyApiKey}&tag=${word}&rating=g`;
+    return fetch(giphyUrl)
+      .then(response => response.json());
+  }
+
+  function displayData(bookData, gifData) {
+    // Display book title
+    let bookTitle = document.createElement('h1');
+    bookTitle.textContent = bookData.items[0].volumeInfo.title;
+    document.body.appendChild(bookTitle);
+
+    // Display GIF
+    let gifImage = document.createElement('img');
+    gifImage.src = gifData.data.images.original.url;
+    document.body.appendChild(gifImage);
+  }
+
+  getRandomWord().then(word=>{
+    return Promise.all([getBookData(word),getRandomGif(word)])
+  })
+  .then(promiseresult=>{
+    let [bookname,gifimage]=promiseresult
+    displayData(bookname, gifimage);
+  })
+ 
+  
+
+</script>
+
+</body>
+</html>
