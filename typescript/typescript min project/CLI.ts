@@ -4,20 +4,20 @@ import * as readlineSync from 'readline-sync';
 
 
 class Commands {
-    Palindrome(str:string) {
+    Palindrome(str:string):boolean {
         const cleanInput = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
         return cleanInput === cleanInput.split('').reverse().join('');
     }
 
-    Lower(str:string) {
+    Lower(str:string):boolean {
         return str.split('').every(char => char === char.toLowerCase());
     }
 
-    Digits(str:string) {
+    Digits(str:string):boolean {
         return str.split('').every(char => /\d/.test(char));
     }
 
-    Armstrong(str:string) {
+    Armstrong(str:string):boolean {
         const power = str.length;
 
         const sum = str.split('').reduce((acc, digit) => acc + Math.pow(parseInt(digit), power), 0);

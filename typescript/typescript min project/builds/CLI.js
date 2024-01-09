@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const process_1 = require("process");
 class Commands {
     Palindrome(str) {
         const cleanInput = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
@@ -42,7 +41,7 @@ class Commands {
     }
 }
 function main() {
-    while (true) {
+    while(true){
         console.log(`
             The available commands are:
             1 - Palindrome - Check if the input is a palindrome
@@ -52,11 +51,10 @@ function main() {
             5 - Nationalize - Check the nationality probability of a given first name
             6 - Exit - Exit successfully from the application
         `);
-        const commandNumber = 5; //parseInt(readlineSync.question('Choose a command number: '), 10);
-        const userinput = "baker"; //readlineSync.question('Choose an input: ');
+        const commandNumber = parseInt(readlineSync.question('Choose a command number: '), 10);
+        const userinput = readlineSync.question('Choose an input: ');
         const command = new Commands();
-        if (commandNumber == 6)
-            (0, process_1.exit)();
+        if(commandNumber == 6)exit()
         command.arrCommands[commandNumber - 1](userinput);
     }
 }
