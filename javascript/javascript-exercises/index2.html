@@ -8,14 +8,6 @@
 <body>
 
 <script>
-  function getRandomWord1() {
-    return fetch('https://random-word-api.herokuapp.com/word')
-      .then(response => response.json())
-      .then(word=>{
-        return Promise.all([getBookData(word),getRandomGif(word)])
-
-      });
-  }
   function getRandomWord() {
     return fetch('https://random-word-api.herokuapp.com/word')
       .then(response => response.json())
