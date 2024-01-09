@@ -7,7 +7,7 @@ export class mainpage{
     tableRows:Locator
     SecuritiesSelector:Locator
     sortButton:Locator
-    filterButton:Locator
+    filterButton:Locator | undefined
 
     constructor(page:Page){
         this.page=page;
@@ -26,5 +26,9 @@ export class mainpage{
 
     async sort(){
         await this.sortButton.click();
+    }
+
+    async waitForLoadState(str:"load" | "domcontentloaded" | "networkidle" | undefined){
+        await this.page.waitForLoadState(str)
     }
 }

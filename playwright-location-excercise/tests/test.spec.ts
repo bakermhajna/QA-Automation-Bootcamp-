@@ -21,21 +21,37 @@ test.describe("test", ()=>{
 
     await mainPage.securitiesSelect('1');
     await mainPage.sort();
-    expect(mainPage.getTable().first().locator("class=item-name ng-star-inserted")).toBe("דלק רכב")
-  })
+    await mainPage.waitForLoadState('networkidle')
+    await mainPage.getTable().first().waitFor()
+    expect(await mainPage.getTable().first().locator('//td[@class="ng-star-inserted"]').innerText()).toBe("דלק רכב")
+  
+  });
+
   test("last",async ({ page })=>{
 
     await mainPage.securitiesSelect('1');
     await mainPage.sort();
-    expect(mainPage.getTable().last().locator("class=item-name ng-star-inserted")).toBe("מטעי הדר 5")
-  })
+    await mainPage.waitForLoadState('networkidle')
+    await mainPage.getTable().last().waitFor()
+    expect(await mainPage.getTable().last().locator('//td[@class="ng-star-inserted"]//a').innerText()).toBe("מטעי הדר 5")
+  });
+
   test("count",async ({ page })=>{
 
     await mainPage.securitiesSelect('1');
     await mainPage.sort();
-    expect(mainPage.getTable().count()).toBe(30)
-  })
+    await mainPage.waitForLoadState("networkidle");
+    expect(await mainPage.getTable().count()).toBe(30);
+  });
 
+
+  test("click",async ({ page })=>{
+
+    await mainPage.getTable().first().waitFor();
+    const title=await mainPage.getTable().first().locator("//td//a").innerText()
+    await mainPage.getTable().first().locator("//td//a").click();
+    expect(mainPage.page.getByText(title)).toBeVisible()
+  });
 
 
 })
