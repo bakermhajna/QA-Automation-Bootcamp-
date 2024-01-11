@@ -12,20 +12,20 @@ let page:Page
 test.beforeEach(async ({},testinfo) => {
 
   browserwrapper=new browserWrapper();
-  page=await browserwrapper.getPage("https://www.tase.co.il")
+  page=await browserwrapper.getPage(config.url)
   
 
 });
 
 
 test.afterEach(async ({ page },testinfo) => {
-  //await browserwrapper.closeDriver();
+  await browserwrapper.closeDriver();
 });
 
-test.describe("login",()=>{
+test.describe("download",()=>{
 
 
-  test('login', async ({  }) => {
+  test('download', async ({  }) => {
   
     let Mainpage =new MainPage(page);
     await Mainpage.clickLoginButton();
@@ -41,10 +41,6 @@ test.describe("login",()=>{
     let dailyreview= new DailyReview(page);
     await dailyreview.clickDownload();
     await browserwrapper.waitForEventDownload()
-
-
-  
-
   });
 
 
